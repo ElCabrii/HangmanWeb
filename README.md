@@ -1,0 +1,3 @@
+- Download the zip file, extract it and run the server.go file
+- Let the program have Admin privilege if needed
+- Go to localhost:8080 to land on the website
