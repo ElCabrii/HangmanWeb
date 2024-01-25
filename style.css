@@ -1,5 +1,5 @@
 body{
-    background-color: #1a151d;
+    background-color: #211f22;
     color: #fff;
     font-family: 'Lato', sans-serif;
     font-size: 20px;
@@ -24,7 +24,7 @@ body{
     font-size: 20px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 20px;
     margin-right: 25px;
     margin-left: 25px;
 }
