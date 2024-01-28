@@ -1,3 +1,25 @@
-- Download the zip file, extract it and run the server.go file
-- Let the program have Admin privilege if needed
-- Go to localhost:8080 to land on the website
+ABOUT
+----------------------------------------------
+This is a beginners' Golang Project. We have developped a small website that host a Hangman Game 
+
+OBJECTIVE
+----------------------------------------------
+- Learn Go and build a group project
+- Build a Go server and an HTML/CSS webpage
+
+PREREQUISITE
+----------------------------------------------
+You don't need any specific knowledge to run the code.
+To understand the code itself you will need to know the basics in html/css and Golang
+
+RESOURCES  
+----------------------------------------------
+
+OVERVIEW
+----------------------------------------------
+
+KEYTOPICS
+----------------------------------------------
+
+PICTURES
+----------------------------------------------
