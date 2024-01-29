@@ -1,6 +1,0 @@
-package hangman
-
-
-func main() {
-		
-}
