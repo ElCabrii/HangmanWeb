@@ -1,25 +1,27 @@
 package main
 
 import (
-	"html/template"
 	"net/http"
+	"html/template"
 )
 
 type Page struct {
-	Valeur string
+	Title string
+	Body []byte
 }
 
-var templates = template.Must(template.ParseFiles("index.html"))
+var tpl *template.Template
+
+func init() {
+	tpl = template.Must(template.ParseGlob("templates/*.gohtml"))
+}
 
 func main() {
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", home)
+	http.Handle("/assets/", http.StripPrefix("/assets", http.FileServer(http.Dir("public"))))
 	http.ListenAndServe(":8080", nil)
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	p := Page{Valeur: "webpage"}
-	err := templates.ExecuteTemplate(w, "index.html", p)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+func home(w http.ResponseWriter, r *http.Request) {
+	tpl.ExecuteTemplate(w, "index.gohtml", nil)
 }
