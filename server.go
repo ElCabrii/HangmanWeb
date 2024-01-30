@@ -1,13 +1,16 @@
 package main
 
 import (
-	"net/http"
+	"fmt"
 	"html/template"
+	"net/http"
+	hangman "server/src"
+	"strconv"
 )
 
 type Page struct {
 	Title string
-	Body []byte
+	Body  []byte
 }
 
 var tpl *template.Template
@@ -16,24 +19,31 @@ func init() {
 	tpl = template.Must(template.ParseGlob("templates/*.html"))
 }
 
-
-func home(w http.ResponseWriter, r *http.Request) {
-	tpl.ExecuteTemplate(w, "index.html", nil)
+func initHangman(difficulty int) string{
+	wordToGuess := hangman.WordToGuess(difficulty)
+	game := hangman.InitGame(wordToGuess)
+	return game
 }
 
-func play(w http.ResponseWriter, r *http.Request) {
-	tpl.ExecuteTemplate(w, "play.html", nil)
+func handleFunctions(w http.ResponseWriter, r *http.Request) {
+	switch r.URL.Path {
+	case "/":
+		tpl.ExecuteTemplate(w, "index.html", nil)
+	case "/play":
+		tpl.ExecuteTemplate(w, "play.html", nil)
+	default:
+		http.Error(w, "404 Not Found", 404)
+	}
 }
 
-func launch() {
-	http.HandleFunc("/", home)
-	http.HandleFunc("/play", play)
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
-	http.ListenAndServe(":8080", nil)
-}
+
 
 func main() {
-	launch()
-
+	fmt.Printf("Starting server at port 8080...\n")
+	http.HandleFunc("/", handleFunctions)
+	http.HandleFunc("/play", handleFunctions)
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
+	fmt.Printf("Server launched successfully !.\n")
+	http.ListenAndServe(":8080", nil)
 }
