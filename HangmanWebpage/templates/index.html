@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/HangmanWebpage/static/style.css"/>
+        <title>HangmanWeb</title>
+    </head>
+    <body>
+        <div>
+            <h1>Hangman Web</h1>
+        <p>Vous pouvez jouer au Hangman en cliquant sur le lien ci-dessous</p>
+        </div>
+        <div>
+        <form method="POST" action="/play">
+                <legend>Choisis un nom d'utilisateur</legend>
+                <div>
+                    <label  for="username">Username:</label><br>
+                    <input class="username" type="text" id="username" name="username"><br>
+                </div>
+                <div>
+                    <button class="button" type="submit"><span>Jouer au Hangman</span></button>
+                </div>
+        </form>
+        </div>
+        <img src="HangmanWebpage/assets/Hangmanlogo.png" alt="Hangman">
+    </body>
+</html>
