@@ -2,6 +2,11 @@ ABOUT
 ----------------------------------------------
 This is a beginners' Golang Project. We have developped a small website that host a Hangman Game 
 
+TEAM
+----------------------------------------------
+- Gabriel D.
+- Josue A.
+
 OBJECTIVE
 ----------------------------------------------
 - Learn Go and build a group project
