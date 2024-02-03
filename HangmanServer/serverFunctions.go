@@ -1,7 +1,10 @@
 package main
 
 import (
+	"Hangman-Web/HangmanController"
+	"fmt"
 	"net/http"
+	"strconv"
 )
 
 type Player struct {
@@ -10,7 +13,9 @@ type Player struct {
 }
 
 type Game struct {
-	Difficulty int
+	Difficulty  int
+	WordToGuess string
+	Game        string
 }
 
 func (player *Player) index(w http.ResponseWriter, r *http.Request) {
@@ -26,8 +31,19 @@ func (player *Player) index(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func play(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "HangmanWebpage/templates/play.html")
+func (game *Game) play(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case "GET":
+		http.ServeFile(w, r, "HangmanWebpage/templates/play.html")
+	case "POST":
+		err := r.ParseForm()
+		if err != nil {
+			return
+		}
+		game.Difficulty, _ = strconv.Atoi(r.FormValue("difficulty"))
+		game.WordToGuess = HangmanController.PickRandWord(game.Difficulty)
+		fmt.Printf(game.WordToGuess)
+	}
 }
 
 func handleDir() {
