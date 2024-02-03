@@ -32,18 +32,15 @@ func (player *Player) index(w http.ResponseWriter, r *http.Request) {
 }
 
 func (game *Game) play(w http.ResponseWriter, r *http.Request) {
-	switch r.Method {
-	case "GET":
-		http.ServeFile(w, r, "HangmanWebpage/templates/play.html")
-	case "POST":
-		err := r.ParseForm()
-		if err != nil {
-			return
-		}
-		game.Difficulty, _ = strconv.Atoi(r.FormValue("difficulty"))
-		game.WordToGuess = HangmanController.PickRandWord(game.Difficulty)
-		fmt.Printf(game.WordToGuess)
+	http.ServeFile(w, r, "HangmanWebpage/templates/play.html")
+	err := r.ParseForm()
+	if err != nil {
+		return
 	}
+	game.Difficulty, _ = strconv.Atoi(r.FormValue("difficulty"))
+	fmt.Printf("%d\n", game.Difficulty)
+	game.WordToGuess = HangmanController.PickRandWord(game.Difficulty)
+	fmt.Printf("%s\n", game.WordToGuess)
 }
 
 func handleDir() {
