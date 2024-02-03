@@ -1,21 +1,26 @@
 package HangmanController
 
 import (
+	"fmt"
 	"math/rand"
 	"os"
 	"strings"
 )
+
+func randInt(max int) int {
+	return rand.Intn(max)
+}
 
 func convertFileToSlice(filepath string) []string {
 	var formattedList []string
 	j := 0
 	read, err := os.ReadFile(filepath)
 	if err != nil {
-		panic(err)
+		fmt.Printf("Fichier introuvable")
 	}
 	file := string(read)
 	for i := 0; i < len(file); i++ {
-		if rune(file[i]) == '\n' {
+		if string(file[i]) == "\n" {
 			formattedList = append(formattedList, file[j:i])
 			j = i + 1
 		}
@@ -26,15 +31,17 @@ func convertFileToSlice(filepath string) []string {
 func PickRandWord(levelChosen int) string {
 	var wordToGuess string
 	var file string
-	if levelChosen == 1 {
-		file = "HangmanWebpage/assets/wordsFiles/easy.txt"
+	if levelChosen == 0 {
+		fmt.Printf("Niveau non choisi")
+	} else if levelChosen == 1 {
+		file = "HangmanWebpage/assets/easy.txt"
 	} else if levelChosen == 2 {
-		file = "HangmanWebpage/assets/wordsFiles/medium.txt"
+		file = "HangmanWebpage/assets/medium.txt"
 	} else if levelChosen == 3 {
-		file = "HangmanWebpage/assets/wordsFiles/hard.txt"
+		file = "HangmanWebpage/assets/hard.txt"
 	}
 	slice := convertFileToSlice(file)
-	lengthList := len(slice)
-	wordToGuess = slice[rand.Intn(lengthList)]
+	sliceLength := len(slice)
+	wordToGuess = slice[randInt(sliceLength)]
 	return strings.ToUpper(wordToGuess)
 }
