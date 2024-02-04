@@ -12,11 +12,17 @@
         <p>Vous pouvez jouer au Hangman en cliquant sur le lien ci-dessous</p>
         </div>
         <div>
-        <form action="/play" method="GET">
+        <form action="/play" method="POST">
                 <legend>Choisis un nom d'utilisateur</legend>
                 <div>
                     <label  for="username">Username:</label><br>
                     <input class="username" type="text" id="username" name="username"><br>
+                </div>
+                <div>
+                    <legend>Choisis une difficulté</legend>
+                    <div>
+                        <label  for="difficultyslider">Difficulté:</label><br>
+                        <input type="range" id="difficultyslider" name="difficulty" min="1" max="3" value="2"><br>
                 </div>
                 <div>
                     <button class="button" type="submit"><span>Jouer au Hangman</span></button>
