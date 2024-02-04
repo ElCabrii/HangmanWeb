@@ -13,34 +13,30 @@ type Player struct {
 }
 
 type Game struct {
+	Player      Player
 	Difficulty  int
 	WordToGuess string
 	Game        string
 }
 
 func (player *Player) index(w http.ResponseWriter, r *http.Request) {
-	switch r.Method {
-	case "GET":
-		http.ServeFile(w, r, "HangmanWebpage/templates/index.html")
-	case "POST":
-		err := r.ParseForm()
-		if err != nil {
-			return
-		}
-		player.Username = r.FormValue("username")
-	}
+	http.ServeFile(w, r, "HangmanWebpage/templates/index.html")
+
 }
 
 func (game *Game) play(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "HangmanWebpage/templates/play.html")
 	err := r.ParseForm()
 	if err != nil {
 		return
 	}
+	game.Player = Player{Username: r.FormValue("username"), Score: 0}
 	game.Difficulty, _ = strconv.Atoi(r.FormValue("difficulty"))
-	fmt.Printf("%d\n", game.Difficulty)
 	game.WordToGuess = HangmanController.PickRandWord(game.Difficulty)
-	fmt.Printf("%s\n", game.WordToGuess)
+	fmt.Printf("Word to guess: %s\n", game.WordToGuess)
+	fmt.Printf("Difficulty: %d\n", game.Difficulty)
+	fmt.Printf("Player: %s\n", game.Player.Username)
+	http.ServeFile(w, r, "HangmanWebpage/templates/play.html")
+
 }
 
 func handleDir() {
