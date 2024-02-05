@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"text/template"
 )
 
 type Player struct {
@@ -30,13 +31,13 @@ func (game *Game) play(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	game.Player = Player{Username: r.FormValue("username"), Score: 0}
-	game.Difficulty, _ = strconv.Atoi(r.FormValue("difficulty"))
+	difficulty := r.FormValue("difficulty")
+	game.Difficulty, _ = strconv.Atoi(difficulty)
 	game.WordToGuess = HangmanController.PickRandWord(game.Difficulty)
 	fmt.Printf("Word to guess: %s\n", game.WordToGuess)
 	fmt.Printf("Difficulty: %d\n", game.Difficulty)
 	fmt.Printf("Player: %s\n", game.Player.Username)
-	http.ServeFile(w, r, "HangmanWebpage/templates/play.html")
-
+	template.Must(template.ParseFiles("HangmanWebpage/templates/play.html")).Execute(w, game)
 }
 
 func handleDir() {
