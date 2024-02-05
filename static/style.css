@@ -45,3 +45,22 @@ a:link {
     text-decoration: none; 
     color : white;
   }
+  
+  :root {
+    --font-primary: 'Fira Sans', sans-serif;
+    --font-size-normal: 1rem;
+    --margin-small: 0.4rem;
+  }
+  
+  p, label {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-normal);
+    font-weight: normal; /* ou un autre poids selon le besoin */
+    font-style: normal; /* ou italic si nécessaire */
+  }
+  
+  input {
+    margin: var(--margin-small);
+    box-sizing: border-box; /* Ajout de box-sizing */
+  }
+  

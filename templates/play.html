@@ -9,10 +9,27 @@
 <body>
         <h1>Jeu du pendu</h1> 
     <div style="margin-top: 200px;">
-        <p style="margin-bottom: 50px;">Choisis une difficulté :</p>
-        <button class="button" onclick="window.location.href = ">Facile</button>
-        <button class="button" onclick="window.location.href = ">Moyen</button>
-        <button class="button" onclick="window.location.href = ">Difficile</button>
+        <fieldset>
+            <legend>Choisissez une difficulté:</legend>
+          
+            <div>
+              <input type="radio" id="Facile" name="drone" value="Facile" checked />
+              <label for="Facile">Facile</label>
+            </div>
+          
+            <div>
+              <input type="radio" id="Moyen" name="drone" value="Moyen" />
+              <label for="Moyen">Moyen</label>
+            </div>
+          
+            <div>
+              <input type="radio" id="Difficile" name="drone" value="Difficile" />
+              <label for="Difficile">Difficile</label>
+            </div>
+            <div>
+                <button type="submit">Soumettre</button>
+            </div>
+          </fieldset>
     </div>
 </body>
 </html>
