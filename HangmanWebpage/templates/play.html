@@ -8,8 +8,13 @@
 </head>
 <body>
         <h1>Jeu du pendu</h1>
+        <h2>Bienvenue dans le Jeu du pendu {{ .Player.Username }} !</h2>
+        <h3>{{ .Game }}</h3>
         <div>
-            Bienvenue {{ .Player.Username }} !
+            <form action="/play" method="GET">
+                <input class="textinput" type="text" name="userInput">
+                <input class="button" type="submit" value="Proposer">
+            </form>
         </div>
 </body>
 </html>

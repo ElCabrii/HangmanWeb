@@ -45,3 +45,21 @@ func PickRandWord(levelChosen int) string {
 	wordToGuess = slice[randInt(sliceLength)]
 	return strings.ToUpper(wordToGuess)
 }
+
+func InitGame(wordToGuess string) []string {
+	var game []string
+	for i := 0; i < len(wordToGuess); i++ {
+		game = append(game, "_ ")
+	}
+	return game
+}
+
+func RefreshGame(userInput string, wordToGuess string, game []string) []string {
+	userInput = strings.ToUpper(userInput) + " "
+	for i := 0; i < len(wordToGuess); i++ {
+		if string(wordToGuess[i]) == userInput {
+			game[i] = userInput + " "
+		}
+	}
+	return game
+}
