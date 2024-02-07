@@ -8,21 +8,21 @@
     </head>
     <body>
         <div>
-            <h1>Hangman Web</h1>
-        <p>Vous pouvez jouer au Hangman en cliquant sur le lien ci-dessous</p>
+            <h1>Le jeu du Pendu</h1>
+        <p>Choisissez un nom d'utilisateur et une difficulte pour commencer a jouer</p>
         </div>
         <div>
         <form action="/play" method="POST">
-                <legend>Choisis un nom d'utilisateur</legend>
                 <div>
-                    <label  for="username">Username:</label><br>
-                    <input class="username" type="text" id="username" name="username"><br>
+                    <label  for="username">Nom d'utilisateur :</label><br>
+                    <input class="username" type="text" id="username" autocomplete="off" name="username"><br>
                 </div>
                 <div>
                     <legend>Choisis une difficulté</legend>
                     <div>
                         <label  for="difficultyslider">Difficulté:</label><br>
                         <input type="range" id="difficultyslider" name="difficulty" min="1" max="3" value="2"><br>
+
                     </div>
                 </div>
                 <div>
