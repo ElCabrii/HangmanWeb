@@ -22,9 +22,10 @@ type Game struct {
 	WrongLetters string
 	Mistakes     int
 	GameOver     int
+	GameImage    string
 }
 
-func (player *Player) index(w http.ResponseWriter, r *http.Request) {
+func index(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "HangmanWebpage/templates/index.html")
 
 }
@@ -58,7 +59,9 @@ func (game *Game) play(w http.ResponseWriter, r *http.Request) {
 			userInput := r.FormValue("userInput")
 
 			game.Game, game.WrongLetters = HangmanController.RefreshGame(userInput, game.WordToGuess, game.Game, game.WrongLetters)
-			game.Mistakes = len(game.WrongLetters)
+			game.Mistakes = len(game.WrongLetters) / 2
+			fmt.Printf("Mistakes: %d\n", game.Mistakes)
+			game.GameImage = "HangmanWebpage/assets/HangmanBringToDeath/hangman" + strconv.Itoa(game.Mistakes) + ".png"
 			game.GameDisplay = HangmanController.PrintGame(game.Game)
 			game.GameOver = HangmanController.IsTheGameOver(game.GameDisplay, game.Mistakes, game.WordToGuess)
 
@@ -86,6 +89,7 @@ func handleDir() {
 	http.Handle("/HangmanWebpage/assets/", http.StripPrefix("/HangmanWebpage/assets", http.FileServer(http.Dir("HangmanWebpage/assets"))))
 	http.Handle("/HangmanWebpage/templates/", http.StripPrefix("/HangmanWebpage/templates", http.FileServer(http.Dir("HangmanWebpage/templates"))))
 	http.Handle("/HangmanWebpage/static/", http.StripPrefix("/HangmanWebpage/static", http.FileServer(http.Dir("HangmanWebpage/static"))))
+	http.Handle("HangmanWebpage/assets/HangmanBringToDeath", http.StripPrefix("HangmanWebpage/assets/HangmanBringToDeath", http.FileServer(http.Dir("HangmanWebpage/assets/HangmanBringToDeath"))))
 }
 
 func resetGame(game *Game) {
