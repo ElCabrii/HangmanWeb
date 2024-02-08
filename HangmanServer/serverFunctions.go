@@ -45,6 +45,8 @@ func (game *Game) play(w http.ResponseWriter, r *http.Request) {
 		game.WordToGuess = HangmanController.PickRandWord(game.Difficulty)
 		game.Game = HangmanController.InitGame(game.WordToGuess)
 		game.GameDisplay = HangmanController.PrintGame(game.Game)
+		game.Mistakes = 0
+		game.GameImage = "HangmanWebpage/assets/HangmanBringToDeath/hangman" + strconv.Itoa(game.Mistakes) + ".png"
 		template.Must(template.ParseFiles("HangmanWebpage/templates/play.html")).Execute(w, game)
 
 	case "GET":
@@ -60,7 +62,6 @@ func (game *Game) play(w http.ResponseWriter, r *http.Request) {
 
 			game.Game, game.WrongLetters = HangmanController.RefreshGame(userInput, game.WordToGuess, game.Game, game.WrongLetters)
 			game.Mistakes = len(game.WrongLetters) / 2
-			fmt.Printf("Mistakes: %d\n", game.Mistakes)
 			game.GameImage = "HangmanWebpage/assets/HangmanBringToDeath/hangman" + strconv.Itoa(game.Mistakes) + ".png"
 			game.GameDisplay = HangmanController.PrintGame(game.Game)
 			game.GameOver = HangmanController.IsTheGameOver(game.GameDisplay, game.Mistakes, game.WordToGuess)
