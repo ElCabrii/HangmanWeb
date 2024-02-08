@@ -7,14 +7,24 @@
     <title>Jeu du pendu</title>
 </head>
 <body>
-        <h1>Jeu du pendu</h1>
-        <h2>Bienvenue dans le Jeu du pendu {{ .Player.Username }} !</h2>
-        <h3>{{ .Game }}</h3>
-        <div>
-            <form action="/play" method="GET">
-                <input class="textinput" type="text" name="userInput">
-                <input class="button" type="submit" value="Proposer">
-            </form>
-        </div>
+    <h1>Jeu du pendu</h1>
+    <h2>Bienvenue dans le jeu du pendu {{ .Player.Username }} !</h2>
+    <h3>{{ .GameDisplay }}</h3>
+    <h4> Lettres fausses: {{ .WrongLetters}}</h4>
+    <div>
+        <form action="/play" method="GET">
+            <input class="textinput" type="text" maxlength="1" autocomplete="off" name="userInput">
+            <button class="pushable">
+                <span class="shadow"></span>
+                <span class="edge"></span>
+                <span class="front">
+        Push Me
+      </span>
+            </button>
+        </form>
+    </div>
+    <div>
+        <img src={{ .GameImage }} alt="Hangman">
+</div>
 </body>
 </html>

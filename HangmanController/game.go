@@ -21,7 +21,7 @@ func convertFileToSlice(filepath string) []string {
 	file := string(read)
 	for i := 0; i < len(file); i++ {
 		if string(file[i]) == "\n" {
-			formattedList = append(formattedList, file[j:i])
+			formattedList = append(formattedList, file[j:i-1])
 			j = i + 1
 		}
 	}
@@ -49,17 +49,37 @@ func PickRandWord(levelChosen int) string {
 func InitGame(wordToGuess string) []string {
 	var game []string
 	for i := 0; i < len(wordToGuess); i++ {
-		game = append(game, "_ ")
+		game = append(game, "_")
 	}
 	return game
 }
 
-func RefreshGame(userInput string, wordToGuess string, game []string) []string {
-	userInput = strings.ToUpper(userInput) + " "
+func RefreshGame(userInput string, wordToGuess string, game []string, wrongLetters string) ([]string, string) {
+	userInput = strings.ToUpper(userInput)
+	var found bool
 	for i := 0; i < len(wordToGuess); i++ {
 		if string(wordToGuess[i]) == userInput {
-			game[i] = userInput + " "
+			game[i] = userInput
+			found = true
 		}
 	}
-	return game
+	if found == false {
+		wrongLetters = wrongLetters + " " + userInput
+	}
+	return game, wrongLetters
+}
+
+func PrintGame(game []string) string {
+	return strings.Join(game, "")
+}
+
+func IsTheGameOver(game string, mistakes int, wordToGuess string) int {
+	if game == wordToGuess {
+		fmt.Printf("Partie terminée\n")
+		return 1
+	} else if mistakes == 10 {
+		return 2
+	} else {
+		return 0
+	}
 }
