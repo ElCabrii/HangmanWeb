@@ -12,7 +12,7 @@
     <h3>{{ .GameDisplay }}</h3>
     <h4> Lettres fausses: {{ .WrongLetters}}</h4>
     <div>
-        <form action="/play" method="GET">
+        <form action="/play" method="POST">
             <input class="textinput" type="text" maxlength="1" autocomplete="off" name="userInput">
             <button class="pushable">
                 <span class="shadow"></span>

@@ -33,7 +33,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 func (game *Game) play(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 
-	case "POST":
+	case "GET":
 
 		err := r.ParseForm()
 		if err != nil {
@@ -49,7 +49,7 @@ func (game *Game) play(w http.ResponseWriter, r *http.Request) {
 		game.GameImage = "HangmanWebpage/assets/HangmanBringToDeath/hangman0.png"
 		template.Must(template.ParseFiles("HangmanWebpage/templates/play.html")).Execute(w, game)
 
-	case "GET":
+	case "POST":
 
 		if game.GameOver == 0 {
 
