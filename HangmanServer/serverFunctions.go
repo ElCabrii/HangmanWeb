@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
-	"text/template"
+	"html/template"
 )
 
 type Player struct {
@@ -46,7 +46,7 @@ func (game *Game) play(w http.ResponseWriter, r *http.Request) {
 		game.Game = HangmanController.InitGame(game.WordToGuess)
 		game.GameDisplay = HangmanController.PrintGame(game.Game)
 		game.Mistakes = 0
-		game.GameImage = "HangmanWebpage/assets/HangmanBringToDeath/hangman" + strconv.Itoa(game.Mistakes) + ".png"
+		game.GameImage = "HangmanWebpage/assets/HangmanBringToDeath/hangman0.png"
 		template.Must(template.ParseFiles("HangmanWebpage/templates/play.html")).Execute(w, game)
 
 	case "GET":
