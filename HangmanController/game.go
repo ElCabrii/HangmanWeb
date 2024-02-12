@@ -34,11 +34,11 @@ func PickRandWord(levelChosen int) string {
 	if levelChosen == 0 {
 		fmt.Printf("Niveau non choisi")
 	} else if levelChosen == 1 {
-		file = "HangmanWebpage/assets/easy.txt"
+		file = "HangmanWebpage/assets/Wordlists/easy.txt"
 	} else if levelChosen == 2 {
-		file = "HangmanWebpage/assets/medium.txt"
+		file = "HangmanWebpage/assets/Wordlists/medium.txt"
 	} else if levelChosen == 3 {
-		file = "HangmanWebpage/assets/hard.txt"
+		file = "HangmanWebpage/assets/Wordlists/hard.txt"
 	}
 	slice := convertFileToSlice(file)
 	sliceLength := len(slice)
