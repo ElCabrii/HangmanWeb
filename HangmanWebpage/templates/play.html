@@ -12,7 +12,7 @@
     <h3>{{ .GameDisplay }}</h3>
     <h4> Lettres fausses: {{ .WrongLetters}}</h4>
     <div>
-        <form action="/play" method="POST">
+        <form method="POST">
             <input id="textInput" type="text" maxlength="1" autocomplete="off" name="userInput">
             <button id="submitLetter" type="submit">Valider</button>
         </form>
