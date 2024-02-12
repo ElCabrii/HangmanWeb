@@ -15,18 +15,18 @@
         <form action="/play" method="GET">
                 <div>
                     <label  for="username">Nom d'utilisateur :</label><br>
-                    <input class="username" type="text" id="username" autocomplete="off" name="username"><br>
+                    <input type="text" id="username" autocomplete="off" name="username" required><br>
                 </div>
                 <div>
                     <legend>Choisis une difficulté</legend>
                     <div>
                         <label  for="difficultyslider">Difficulté:</label><br>
-                        <input type="range" id="difficultyslider" name="difficulty" min="1" max="3" value="2"><br>
-
+                        <input type="range" id="difficultyslider" name="difficulty" min="1" max="3" value="2" oninput="num.value = this.value"><br>
+                        <output id="num">2</output>
                     </div>
                 </div>
                 <div>
-                    <button id="bottone1"><strong>Jouer au Hangman</strong></button>
+                    <button id="hangmanPlay">Jouer au Hangman</button>
                 </div>
         </form>
         </div>
