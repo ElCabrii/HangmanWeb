@@ -13,14 +13,8 @@
     <h4> Lettres fausses: {{ .WrongLetters}}</h4>
     <div>
         <form action="/play" method="POST">
-            <input class="textinput" type="text" maxlength="1" autocomplete="off" name="userInput">
-            <button class="pushable">
-                <span class="shadow"></span>
-                <span class="edge"></span>
-                <span class="front">
-        Push Me
-      </span>
-            </button>
+            <input id="textInput" type="text" maxlength="1" autocomplete="off" name="userInput">
+            <button id="submitLetter" type="submit">Valider</button>
         </form>
     </div>
     <div>
