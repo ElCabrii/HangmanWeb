@@ -1,5 +1,5 @@
 body{
-    background-image: url('https://preview.redd.it/7aw9hehyndj81.jpg?width=960&crop=smart&auto=webp&s=79627ac2f8d383d87684b451ea77fe027f612d4a');
+    background-image: url('https://wallpapers.hector.me/wavey/2.1/desktop/Wavey%20Moon%20Dark.jpg');
     background-size: cover;
     color: #FFFFFF;
     font-family: 'Lato', sans-serif;
@@ -21,13 +21,14 @@ form {
     outline: none;
 }
 #username{
-    background-color: #363338;
+    background-color: rgba(255, 255, 255, 0.2);
     margin-left: -10px;
     width: 300px;
     padding: 10px;
     margin-bottom: 50px;
     margin-top: 10px;
     border:none;
+    outline: none;
 }
 
 #hangmanPlay{
@@ -57,17 +58,60 @@ margin-top: 20px;
     text-align: center;
     font-size: 28px;
     padding: 20px;
-    width: 400px;
+    width: 200px;
     cursor: pointer;
     margin-top: 20px;
 }
 
 #textInput{
-    background-color: #363338;
+    background-color: rgba(255, 255, 255, 0.2);
     margin-left: -10px;
     width: 300px;
     padding: 10px;
     margin-bottom: 50px;
     margin-top: 10px;
     border:none;
+    outline: none;
+}
+
+#game{
+    margin-top: 300px;
+    letter-spacing: 40px;
+    font-size: 40px;
+}
+
+#hangmanPNG{
+    margin-top: 300px;
+}
+
+.user{
+    position: fixed;
+    right: 50px;
+    top: 0;
+}
+
+.split {
+height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
