@@ -1,5 +1,5 @@
 body{
-    background-image: url('../assets/background.jpg');
+    background-image: url('https://preview.redd.it/7aw9hehyndj81.jpg?width=960&crop=smart&auto=webp&s=79627ac2f8d383d87684b451ea77fe027f612d4a');
     background-size: cover;
     color: #FFFFFF;
     font-family: 'Lato', sans-serif;
@@ -43,8 +43,31 @@ form {
 margin-top: 20px;
 }
 
-#difficultyslider{
+#difficultySlider{
     width: 300px;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+#submitLetter{
+    border-radius: 40px;
+    background-color: #002389;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 400px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#textInput{
+    background-color: #363338;
+    margin-left: -10px;
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 50px;
+    margin-top: 10px;
+    border:none;
 }
