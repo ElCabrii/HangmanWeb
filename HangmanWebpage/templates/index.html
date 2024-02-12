@@ -4,32 +4,37 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/HangmanWebpage/static/style.css"/>
+        <link rel="icon" type="image/x-icon" href="/HangmanWebpage/assets/IMG/favicon.ico" />
         <title>Jeu du pendu</title>
     </head>
     <body>
-        <div>
-            <h1>Le jeu du Pendu</h1>
-        <p>Choisissez un nom d'utilisateur et une difficulté pour commencer a jouer</p>
+        <div class="user">
+            {{ .Player.Username }}<br>
+            HighScore : {{ .Player.HighScore }}<br>
         </div>
         <div>
-        <form action="/play" method="GET">
+            <h1>Le jeu du Pendu</h1>
+            <p>Choisissez un nom d'utilisateur et une difficulté pour commencer a jouer</p>
+        </div>
+        <div>
+            <form action="/play" method="GET">
                 <div>
                     <label  for="username">Nom d'utilisateur :</label><br>
-                    <input type="text" id="username" autocomplete="off" name="username" required><br>
+                    <input type="text" id="username" autocomplete="off" name="username" value={{ .Player.Username }} required ><br>
                 </div>
                 <div>
                     <legend>Choisis une difficulté</legend>
                     <div>
                         <label  for="difficultySlider">Difficulté:</label><br>
-                        <input type="range" id="difficultySlider" name="difficulty" min="1" max="3" value="2" oninput="num.value = this.value"><br>
-                        <output id="num">2</output>
+                        <input type="range" id="difficultySlider" name="difficulty" min="1" max="3" value={{ .Difficulty }} oninput="num.value = this.value"><br>
+                        <output id="num">{{ .Difficulty }}</output>
                     </div>
                 </div>
                 <div>
-                    <button id="hangmanPlay">Jouer au Hangman</button>
+                    <button id="hangmanPlay" type="submit">Jouer au Hangman</button>
                 </div>
-        </form>
+            </form>
         </div>
-        <img src="HangmanWebpage/assets/IMG/Hangmanlogo.png" alt="Hangman">
+        <img src="/HangmanWebpage/assets/IMG/Hangman.png" alt="Hangman">
     </body>
 </html>
