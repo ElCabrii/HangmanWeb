@@ -9,45 +9,47 @@ import (
 )
 
 type Player struct {
-	Username string
-	Score    int
+	Username  string
+	Score     int
+	HighScore int
 }
 
 type Game struct {
-	Player       Player
-	Difficulty   int
-	WordToGuess  string
-	Game         []string
-	GameDisplay  string
-	WrongLetters string
-	Mistakes     int
-	GameOver     int
-	GameImage    string
+	Player            Player
+	Difficulty        int
+	WordToGuess       string
+	Game              []string
+	GameDisplay       string
+	WrongLetters      string
+	Mistakes          int
+	RemainingMistakes int
+	GameOver          int
+	GameImage         string
+	AlreadyFound      string
 }
 
-func Index(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "HangmanWebpage/templates/index.html")
-
+func (game *Game) Index(w http.ResponseWriter, r *http.Request) {
+	execTmpl(w, "HangmanWebpage/templates/index.html", game)
 }
 
 func (game *Game) Play(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 
 	case "GET":
-
+		game.resetGame()
 		err := r.ParseForm()
 		if err != nil {
 			fmt.Printf("Formulaire vide\n")
 		}
 
-		game.Player = Player{Username: r.FormValue("username"), Score: 0}
+		game.Player.Username = r.FormValue("username")
 		game.Difficulty, _ = strconv.Atoi(r.FormValue("difficulty"))
 		game.WordToGuess = HangmanController.PickRandWord(game.Difficulty)
 		game.Game = HangmanController.InitGame(game.WordToGuess)
 		game.GameDisplay = HangmanController.PrintGame(game.Game)
-		game.Mistakes = 0
+		game.RemainingMistakes = 10
 		game.GameImage = "HangmanWebpage/assets/HangmanBringToDeath/hangman0.png"
-		template.Must(template.ParseFiles("HangmanWebpage/templates/play.html")).Execute(w, game)
+		execTmpl(w, "HangmanWebpage/templates/play.html", game)
 
 	case "POST":
 
@@ -59,9 +61,9 @@ func (game *Game) Play(w http.ResponseWriter, r *http.Request) {
 			}
 
 			userInput := r.FormValue("userInput")
-
-			game.Game, game.WrongLetters = HangmanController.RefreshGame(userInput, game.WordToGuess, game.Game, game.WrongLetters)
+			game.Game, game.WrongLetters, game.AlreadyFound = HangmanController.RefreshGame(userInput, game.WordToGuess, game.Game, game.WrongLetters)
 			game.Mistakes = len(game.WrongLetters) / 2
+			game.RemainingMistakes = 10 - game.Mistakes
 			game.GameImage = "HangmanWebpage/assets/HangmanBringToDeath/hangman" + strconv.Itoa(game.Mistakes) + ".png"
 			game.GameDisplay = HangmanController.PrintGame(game.Game)
 			game.GameOver = HangmanController.IsTheGameOver(game.GameDisplay, game.Mistakes, game.WordToGuess)
@@ -69,18 +71,19 @@ func (game *Game) Play(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if game.GameOver == 1 {
-
-			template.Must(template.ParseFiles("HangmanWebpage/templates/win.html")).Execute(w, game)
-			resetGame(game)
+			game.Player.Score = game.RemainingMistakes
+			if game.Player.Score > game.Player.HighScore {
+				game.Player.HighScore = game.Player.Score
+			}
+			execTmpl(w, "HangmanWebpage/templates/win.html", game)
 
 		} else if game.GameOver == 2 {
-
-			template.Must(template.ParseFiles("HangmanWebpage/templates/lose.html")).Execute(w, game)
-			resetGame(game)
+			game.Player.Score = game.RemainingMistakes
+			execTmpl(w, "HangmanWebpage/templates/lose.html", game)
 
 		} else {
 
-			template.Must(template.ParseFiles("HangmanWebpage/templates/play.html")).Execute(w, game)
+			execTmpl(w, "HangmanWebpage/templates/play.html", game)
 
 		}
 	}
@@ -93,12 +96,19 @@ func HandleDir() {
 	http.Handle("HangmanWebpage/assets/HangmanBringToDeath", http.StripPrefix("HangmanWebpage/assets/HangmanBringToDeath", http.FileServer(http.Dir("HangmanWebpage/assets/HangmanBringToDeath"))))
 }
 
-func resetGame(game *Game) {
-	game.Difficulty = 0
+func (game *Game) resetGame() {
 	game.WordToGuess = ""
 	game.Game = []string{}
 	game.GameDisplay = ""
 	game.WrongLetters = ""
 	game.Mistakes = 0
 	game.GameOver = 0
+	game.Player.Score = 0
+}
+
+func execTmpl(w http.ResponseWriter, tmpl string, data interface{}) {
+	err := template.Must(template.ParseFiles(tmpl)).Execute(w, data)
+	if err != nil {
+		fmt.Printf("Erreur d'execution du template\n")
+	}
 }
