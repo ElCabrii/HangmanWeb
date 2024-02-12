@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/HangmanWebpage/static/style.css"/>
+    <link rel="stylesheet" href="/HangmanWebpage/static/winlose.css"/>
+    <link rel="icon" href="/HangmanWebpage/assets/IMG/favicon.ico" />
     <title>Jeu du pendu</title>
 </head>
 <body>
     <div>
-        {{ .Player.Username }}
-        Vous avez perdu ! Le mot était {{ .WordToGuess }}.
+        <img src="https://gifs.eco.br/wp-content/uploads/2022/09/gifs-de-game-over-5.gif?response_id=5921495de69f2125a7a0bfa6%20width=" alt="lose" class="winloseimg">
+        <p class="winlosetext">Vous avez perdu ! Le mot était {{ .WordToGuess }}. </p>
+        <p> Points gagnés : {{ .Player.Score }}</p>
     </div>
     <div>
-        <a class="homebutton" href="/">Rejouer</a>
+        <button class="homebutton" onclick="window.location.href='/'">Rejouer</button>
     </div>
 </body>
 </html>

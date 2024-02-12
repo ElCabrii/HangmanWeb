@@ -1,0 +1,35 @@
+body{
+    background-image: url('https://wallpapers.hector.me/wavey/2.1/desktop/Wavey%20Moon%20Dark.jpg');
+    background-size: cover;
+    color: #FFFFFF;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    height : auto;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+}
+
+.winlosetext{
+    font-size: 40px;
+}
+
+.homebutton{
+    border-radius: 40px;
+    background-color: #002389;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 400px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.winloseimg{
+    margin-top: 50px;
+}

@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/HangmanWebpage/static/style.css"/>
+    <link rel="stylesheet" href="/HangmanWebpage/static/winlose.css"/>
+    <link rel="icon" href="/HangmanWebpage/assets/IMG/favicon.ico" />
     <title>Jeu du pendu</title>
 </head>
 <body>
     <div>
-        <p>Bravo {{ .Player.Username }} vous avez gagné ! Bien joué !
+        <img src="https://media1.tenor.com/m/e4c6kMI-qZgAAAAd/gg-ggez.gif" alt="win" class="winloseimg">
+        <p class="winlosetext">Vous avez gagné ! Bien joué !
+        <p> Erreur : {{ .Mistakes }}</p>
+        <p> Points gagnés : {{ .Player.Score }}</p>
     </div>
     <div>
-        <a class="homebutton" href="/">Rejouer</a>
+        <button class="homebutton" onclick="window.location.href='/'">Rejouer</button>
     </div>
 </body>
 </html>
