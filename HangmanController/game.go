@@ -54,19 +54,34 @@ func InitGame(wordToGuess string) []string {
 	return game
 }
 
-func RefreshGame(userInput string, wordToGuess string, game []string, wrongLetters string) ([]string, string) {
+func RefreshGame(userInput string, wordToGuess string, game []string, wrongLetters string) ([]string, string, string) {
 	userInput = strings.ToUpper(userInput)
-	var found bool
+	found := 0
+	alreadyFound := ""
+
 	for i := 0; i < len(wordToGuess); i++ {
-		if string(wordToGuess[i]) == userInput {
+		if game[i] == userInput {
+			found = 1
+		} else if string(wordToGuess[i]) == userInput {
 			game[i] = userInput
-			found = true
+			found = 2
 		}
 	}
-	if found == false {
-		wrongLetters = wrongLetters + " " + userInput
+
+	if found == 0 {
+		for i := 0; i < len(wrongLetters); i++ {
+			if string(wrongLetters[i]) == userInput {
+				found = 1
+			}
+		}
+		if found == 0 {
+			wrongLetters = wrongLetters + " " + userInput
+		}
 	}
-	return game, wrongLetters
+	if found == 1 || found == 3 {
+		alreadyFound = "La lettre " + userInput + " a déjà été testée"
+	}
+	return game, wrongLetters, alreadyFound
 }
 
 func PrintGame(game []string) string {
@@ -75,7 +90,6 @@ func PrintGame(game []string) string {
 
 func IsTheGameOver(game string, mistakes int, wordToGuess string) int {
 	if game == wordToGuess {
-		fmt.Printf("Partie terminée\n")
 		return 1
 	} else if mistakes == 10 {
 		return 2
