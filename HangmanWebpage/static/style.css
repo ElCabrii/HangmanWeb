@@ -1,26 +1,26 @@
 @font-face {
-  font-family: Lazy January;
+  font-family: 'Lazy January';
   src: url(../static/Lazy\ January.otf);
 }
 
 @font-face {
-  font-family: NOCTADO;
+  font-family: 'NOCTADO';
   src: url(../static/NOCTADO.otf);
 }
 
 @font-face {
-  font-family: MEPHISTO;
+  font-family: 'MEPHISTO';
   src: url(../static/MEPHISTO.TTF);
 }
 
 h1 {
-  font-family: "MEPHISTO", serif;
+  font-family: "Lazy January", sans-serif;
   font-weight: 500;
 }
 
 body{
   background: rgb(0,0,0);
-  background: linear-gradient(309deg, rgba(0,0,0,1) 0%, rgba(161,170,172,1) 100%);
+  background: linear-gradient(309deg, rgba(0,0,0,1) 0%, rgb(0, 121, 148) 100%);
   color: #fff;
   font-family: 'Lato';
   font-size: 20px;
@@ -35,7 +35,7 @@ body{
 form {
   background-color: #211f22;
   align-content: center;
-  font-family: '', sans-serif;
+  font-family: 'Lazy January', sans-serif;
   letter-spacing: 1px;
   margin: 0 auto;
   max-width: 400px;
