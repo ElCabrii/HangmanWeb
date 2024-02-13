@@ -1,6 +1,11 @@
 ABOUT
 ----------------------------------------------
-This is a beginners' Golang Project. We have developped a small website that host a Hangman Game 
+This is a beginners' Golang Project. We have developed a small website that host a Hangman Game  
+
+LANGUAGE
+----------------------------------------------
+- FR
+- EN
 
 TEAM
 ----------------------------------------------
@@ -19,12 +24,34 @@ To understand the code itself you will need to know the basics in html/css and G
 
 RESOURCES  
 ----------------------------------------------
+Images and Icons are from the following websites
+- https://wallpapers.hector.me
+- https://openai.com/dall-e-2
+- https://www.flaticon.com/
+
+Some sites that I used to learn Go and build the project
+- https://golang.org/doc/
+- https://www.w3schools.com/
+- https://www.medium.com/
+- https://openclassrooms.com/
+- And of course StackOverflow and Reddit
 
 OVERVIEW
 ----------------------------------------------
+The project is a simple website that host a Hangman Game.
+The game is a simple word guessing game. The user has to guess the word by clicking on the letters. If the letter is in the word, it will be displayed. If not, the user will lose a life. The user has 10 lives. If the user loses all his lives, he loses the game. If the user guesses the word, he wins the game.
 
 KEYTOPICS
 ----------------------------------------------
+- Go
+- HTML
+- CSS
+- Web Server
 
 PICTURES
 ----------------------------------------------
+![img.png](ScreenShots/img.png)
+![img_1.png](ScreenShots/img_1.png)
+![img_2.png](ScreenShots/img_2.png)
+![img_3.png](ScreenShots/img_3.png)
+![img_5.png](ScreenShots/img_5.png)
