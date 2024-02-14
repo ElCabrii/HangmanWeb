@@ -1,19 +1,4 @@
 @font-face {
-  font-family: 'Lazy January';
-  src: url(../static/Lazy\ January.otf);
-}
-
-@font-face {
-  font-family: 'NOCTADO';
-  src: url(../static/NOCTADO.otf);
-}
-
-@font-face {
-  font-family: 'MEPHISTO';
-  src: url(../static/MEPHISTO.TTF);
-}
-
-@font-face {
   font-family: 'Sixtyfour';
   src: url(../static/Sixtyfour.ttf);
 }
@@ -28,6 +13,10 @@ h1 {
           "SCAN" 0;
 }
 
+legend{
+  margin-bottom: 15px;
+
+}
 body{
   background: rgb(0,0,0);
   background: linear-gradient(309deg, rgba(0,0,0,1) 0%, rgb(115, 115, 114) 100%);
@@ -46,26 +35,29 @@ form {
   background-color: #211f22;
   align-content: center;
   font-family: 'Consolas', sans-serif;
-  letter-spacing: 1px;
+  font-size: smaller;
+  letter-spacing: 0.5px;
   margin: 0 auto;
   max-width: 400px;
   outline: none;
   border: 4mm ridge rgba(107, 107, 107, 0.6);
 }
-form input[type="text"],
-form textarea {
-  background-color: #363338;
-  margin-left: -10px;
-  width: 75%;
-  padding: 10px;
-  margin-bottom: 50px;
-  margin-top: 10px;
-  border:none;
+.input {
+  margin: 40px;
+  background: none;
+  border: none;
+  outline: none;
+  max-width: 190px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 9999px;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+  color: #fff;
 }
 form input[type="submit"],
 button {
+  margin-bottom: 10px;
   height: 50px;
-  margin: 5px;
   width: 120px;
   background: #333;
   -webkit-box-pack: center;
@@ -104,3 +96,4 @@ button:active {
   -webkit-transition: 100ms;
   transition: 100ms;
 }
+
