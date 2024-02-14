@@ -54,6 +54,7 @@ form {
   box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
   color: #fff;
 }
+
 form input[type="submit"],
 button {
   margin-bottom: 10px;
@@ -96,4 +97,3 @@ button:active {
   -webkit-transition: 100ms;
   transition: 100ms;
 }
-
