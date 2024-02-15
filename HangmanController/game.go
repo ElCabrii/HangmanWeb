@@ -7,10 +7,6 @@ import (
 	"strings"
 )
 
-func randInt(max int) int {
-	return rand.Intn(max)
-}
-
 func convertFileToSlice(filepath string) []string {
 	var formattedList []string
 	j := 0
@@ -42,7 +38,7 @@ func PickRandWord(levelChosen int) string {
 	}
 	slice := convertFileToSlice(file)
 	sliceLength := len(slice)
-	wordToGuess = slice[randInt(sliceLength)]
+	wordToGuess = slice[rand.Intn(sliceLength)]
 	return strings.ToUpper(wordToGuess)
 }
 
