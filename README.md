@@ -5,7 +5,6 @@ This is a beginners' Golang Project. We have developed a small website that host
 LANGUAGE
 ----------------------------------------------
 - FR
-- EN
 
 TEAM
 ----------------------------------------------
