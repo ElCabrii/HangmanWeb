@@ -24,11 +24,9 @@ To understand the code itself you will need to know the basics in html/css and G
 RESOURCES  
 ----------------------------------------------
 Images and Icons are from the following websites
-- https://wallpapers.hector.me
-- https://openai.com/dall-e-2
 - https://www.flaticon.com/
 
-Some sites that I used to learn Go and build the project
+Some sites that we used to learn Go and build the project
 - https://golang.org/doc/
 - https://www.w3schools.com/
 - https://www.medium.com/
