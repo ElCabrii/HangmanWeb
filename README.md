@@ -18,7 +18,7 @@ OBJECTIVE
 
 PREREQUISITE
 ----------------------------------------------
-You don't need any specific knowledge to run the code. Just run the executable file or run the code with `go run HangmanServer/main.go` and open your browser to `localhost:8080`.
+You don't need any specific knowledge to run the code. Just run the code with `go run HangmanServer/main.go` and open your browser to `localhost:8080`.
 To understand the code itself you will need to know the basics in html/css and Golang
 
 RESOURCES  
