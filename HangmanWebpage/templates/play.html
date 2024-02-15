@@ -14,22 +14,26 @@
     </div>
     <h1>Jeu du pendu</h1>
     <h2>Bienvenue dans le jeu du pendu {{ .Player.Username }} !</h2>
-    <div class="split left">
+    <div>
     <p id="game">{{ .GameDisplay }}</p>
-    <p> Lettres fausses: {{ .WrongLetters}}</p>
-    <p> {{ .AlreadyFound }}</p>
-    <p> Erreurs restantes: {{ .RemainingMistakes }}</p>
+    <div>
+        <p>Lettres fausses:</p>
+        <p id="falseLetters"> {{ .WrongLetters}}</p>
+        <p> {{ .AlreadyFound }}</p>
+    </div>
+    <div>
+        <p> Erreurs restantes:</p>
+        <p>{{ .RemainingMistakes }}</p>
+    </div>
     <div>
         <form method="POST">
-            <input id="textInput" type="text" maxlength="1" autocomplete="off" name="userInput" required>
-            <button id="submitLetter" type="submit">Valider</button>
+            <input id="textInput" type="text" maxlength="1" autocomplete="off" name="userInput" required><br>
+            <button type="submit">Valider</button>
         </form>
     </div>
     </div>
-    <div class="split right">
-        <div class="split centered">
+    <div>
         <img src={{ .GameImage }} alt="Hangman" id="hangmanPNG">
-        </div>
     </div>
 </body>
 </html>
