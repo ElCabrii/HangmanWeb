@@ -77,7 +77,7 @@ func RefreshGame(userInput string, wordToGuess string, game []string, wrongLette
 		}
 		//If not, we add it to the wrong letters list
 		if found == 0 {
-			wrongLetters = wrongLetters + " " + userInput
+			wrongLetters += userInput
 		}
 	}
 	//If the user input is already in the game or in the wrong letters list, we return a message to inform the user
